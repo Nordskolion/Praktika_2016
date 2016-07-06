@@ -6,7 +6,7 @@ NormalizeDocum::NormalizeDocum(string namedir) {
     nameDir = namedir;
     extSearchFiles = ".txt";
     getDir();
-    normalizeFiles();   
+    normalizeFiles();
 
 }
 
@@ -21,10 +21,11 @@ int NormalizeDocum::getDir ()
         return errno;
     }
 
-    while ((dirp = readdir(dp)) != NULL) 
+    while ((dirp = readdir(dp)) != NULL)
     {
         if(!strcmp( dirp->d_name, "." )) continue;
         if(!strcmp( dirp->d_name, ".." )) continue;
+        if ( strstr( dirp->d_name, ".norm" )) continue;
         if ( strstr( dirp->d_name, extSearchFiles.c_str() ))
             listFiles.push_back(string(dirp->d_name));
     }
@@ -35,14 +36,14 @@ int NormalizeDocum::getDir ()
 int NormalizeDocum::normalizeFiles()
 {
 
-    for (unsigned int i = 0;i < listFiles.size();i++) 
+    for (unsigned int i = 0;i < listFiles.size();i++)
     {
 
         string fullPathIn =  nameDir + listFiles[i];
-        string fullPathOut =  nameDir + listFiles[i] + extNormDocum; 
+        string fullPathOut =  nameDir + listFiles[i] + extNormDocum;
         wofstream fileIdWrite(fullPathOut);
         wifstream fileIdRead(fullPathIn);
-        
+
         // cout<<fullPathIn<<"      "<<fullPathOut<<endl;
     wstring strInput;
     if (!fileIdRead)
