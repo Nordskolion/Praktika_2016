@@ -10,7 +10,7 @@
 using namespace std;
 
 
-class NormalizeDocum {
+class NormalizeDocum {   // класс для нормализации документов 
 private:
     string nameDir;
     string extNormDocum = ".norm";

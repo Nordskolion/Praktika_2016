@@ -2,7 +2,7 @@
 
 
 
-NormalizeDocum::NormalizeDocum(string namedir) {
+NormalizeDocum::NormalizeDocum(string namedir) { // конструктор  . Сразу нормализует все файлы в дириктории 
     nameDir = namedir;
     extSearchFiles = ".txt";
     getDir();
@@ -11,7 +11,7 @@ NormalizeDocum::NormalizeDocum(string namedir) {
 }
 
 
-int NormalizeDocum::getDir ()
+int NormalizeDocum::getDir () // функция открывает дерикторию и считывает в лист(вектор) 
 {
     DIR *dp;
     struct dirent *dirp;
@@ -33,7 +33,7 @@ int NormalizeDocum::getDir ()
     return 0;
 }
 
-int NormalizeDocum::normalizeFiles()
+int NormalizeDocum::normalizeFiles() // функция нормализация файла 
 {
 
     for (unsigned int i = 0;i < listFiles.size();i++)
@@ -66,18 +66,17 @@ int NormalizeDocum::normalizeFiles()
         //getline(inf, strInput);
         fileIdRead>>strInput;
         wstring strChange;
-        if(strInput.size() < 7) continue;
+        if(strInput.size() < 7) continue;           ///    отбрасываем слова меньше 4ех букв  ( чар = 2 байта   6=3 буквы )
         for(size_t i=0;i< strInput.size();i++) {
-            if(cannonChar(strInput[i]) != '\0') {
+            if(cannonChar(strInput[i]) != '\0') {     //  пропускаем этот символ или нет 
                 strChange += cannonChar(strInput[i]);
 
             }
-
         }
         strChange += L' ';
         fileIdWrite<<strChange;
-        wcout <<"==========================="<<endl;
-        wcout <<strChange<<endl;
+        // wcout <<"==========================="<<endl;
+        // wcout <<strChange<<endl;
 
 
 
@@ -99,7 +98,7 @@ int NormalizeDocum::normalizeFiles()
 
 
 
-wchar_t NormalizeDocum::cannonChar( wchar_t r)
+wchar_t NormalizeDocum::cannonChar( wchar_t r) // функция замены и проверки букв на каноничность 
 {
  wchar_t res;
  switch (r)
