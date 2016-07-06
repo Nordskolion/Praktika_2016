@@ -13,7 +13,7 @@ using namespace std;
 class NormalizeDocum {
 private:
     string nameDir;
-    string extNormDocum = "norm";
+    string extNormDocum = ".norm";
     string extSearchFiles=".txt";
     vector<string> listFiles;
 

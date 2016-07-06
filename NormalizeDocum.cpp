@@ -21,7 +21,8 @@ int NormalizeDocum::getDir ()
         return errno;
     }
 
-    while ((dirp = readdir(dp)) != NULL) {
+    while ((dirp = readdir(dp)) != NULL) 
+    {
         if(!strcmp( dirp->d_name, "." )) continue;
         if(!strcmp( dirp->d_name, ".." )) continue;
         if ( strstr( dirp->d_name, extSearchFiles.c_str() ))
@@ -33,10 +34,64 @@ int NormalizeDocum::getDir ()
 
 int NormalizeDocum::normalizeFiles()
 {
-    for (unsigned int i = 0;i < listFiles.size();i++) {
-        cout<<listFiles[i]<<endl;
+
+    for (unsigned int i = 0;i < listFiles.size();i++) 
+    {
+
+        string fullPathIn =  nameDir + listFiles[i];
+        string fullPathOut =  nameDir + listFiles[i] + extNormDocum; 
+        wofstream fileIdWrite(fullPathOut);
+        wifstream fileIdRead(fullPathIn);
+        
+        // cout<<fullPathIn<<"      "<<fullPathOut<<endl;
+    wstring strInput;
+    if (!fileIdRead)
+    {
+        // Ошибка октрытия файла
+        cerr << "Файл : " << fullPathIn<< " не возможно октрыть !" << endl;
+        exit(1);
+    }
+    if (!fileIdWrite)
+    {
+        // Ошибка октрытия файла
+        cerr << "Файл : " << fullPathOut << " не возможно октрыть !" << endl;
+        exit(1);
     }
 
+    while (!fileIdRead.eof())
+    {
+
+
+        //getline(inf, strInput);
+        fileIdRead>>strInput;
+        wstring strChange;
+        if(strInput.size() < 7) continue;
+        for(size_t i=0;i< strInput.size();i++) {
+            if(cannonChar(strInput[i]) != '\0') {
+                strChange += cannonChar(strInput[i]);
+
+            }
+
+        }
+        strChange += L' ';
+        fileIdWrite<<strChange;
+        wcout <<"==========================="<<endl;
+        wcout <<strChange<<endl;
+
+
+
+    }
+
+
+
+    fileIdRead.close();
+    fileIdWrite.close();
+
+
+
+    }
+
+    return 0;
 }
 
 
