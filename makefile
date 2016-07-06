@@ -1,9 +1,9 @@
-all: andreyPraktika.o NormalizeDocum.o
-	g++ andreyPraktika.o NormalizeDocum.o  -std=c++11 -o out
+all: main.o NormalizeDocum.o
+	g++ main.o NormalizeDocum.o  -std=c++11 -o out
 	rm *.o 
 
-andreyPraktika.o: ./andreyPraktika.cpp
-	g++ -c -std=c++11 ./andreyPraktika.cpp
+main.o: ./main.cpp
+	g++ -c -std=c++11 ./main.cpp
 
 NormalizeDocum.o: ./NormalizeDocum.cpp
 	g++ -c -std=c++11 ./NormalizeDocum.cpp 

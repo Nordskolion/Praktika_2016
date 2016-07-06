@@ -24,7 +24,8 @@ public:
     int normalizeFiles();
     string getNameDir() { return nameDir;}
     vector<string> getListFiles()  {return listFiles; }
-    void setNameDir(string namedir) {nameDir = namedir;}
+    void setNameDir(string namedir) {nameDir = namedir;}    
+    wchar_t cannonChar(wchar_t) ;
     ~NormalizeDocum(){};
 
 };
