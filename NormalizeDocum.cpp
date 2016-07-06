@@ -6,6 +6,7 @@ NormalizeDocum::NormalizeDocum(string namedir) {
     nameDir = namedir;
     extSearchFiles = ".txt";
     getDir();
+    normalizeFiles();
 
 }
 
@@ -30,3 +31,10 @@ int NormalizeDocum::getDir ()
     return 0;
 }
 
+int NormalizeDocum::normalizeFiles()
+{
+    for (unsigned int i = 0;i < listFiles.size();i++) {
+        cout<<listFiles[i]<<endl;
+    }
+
+}

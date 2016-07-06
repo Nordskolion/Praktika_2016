@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <string.h>
 #include <locale>
 #include <vector>
 #include <sstream>
@@ -21,6 +21,7 @@ public:
 
     int getDir ();
     NormalizeDocum(string );
+    int normalizeFiles();
     string getNameDir() { return nameDir;}
     vector<string> getListFiles()  {return listFiles; }
     void setNameDir(string namedir) {nameDir = namedir;}
