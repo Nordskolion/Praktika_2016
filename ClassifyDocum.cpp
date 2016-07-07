@@ -4,6 +4,7 @@
 ClassifyDocum::ClassifyDocum(string nameclass ,string namedirclass)
 {
 	nameClass=nameclass;
-	nameDirClass = namedirclass;	
+	nameDirClass = namedirclass;
+	normalize = new NormalizeDocum(nameDirClass);
 
 }

@@ -4,12 +4,14 @@
 #include <map>
 #include <vector>
 #include <sstream>
+#include "NormalizeDocum.h"
 using namespace std;
 typedef map <wstring,int> CountWords;
 
 class ClassifyDocum
 {
 private:
+	NormalizeDocum normalize;
 	vector<CountWords> classCountWords;
 	string nameDirClass;
 	string nameClass;
