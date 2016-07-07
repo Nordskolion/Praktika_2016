@@ -10,7 +10,6 @@ NormalizeDocum::NormalizeDocum(string namedir) { // конструктор  . С
 
 }
 
-
 int NormalizeDocum::getDir () // функция открывает дерикторию и считывает в лист(вектор) 
 {
     DIR *dp;

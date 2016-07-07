@@ -12,6 +12,7 @@ using namespace std;
 
 class NormalizeDocum {   // класс для нормализации документов 
 private:
+
     string nameDir;
     string extNormDocum = ".norm";
     string extSearchFiles=".txt";
@@ -21,6 +22,7 @@ public:
 
     int getDir ();
     NormalizeDocum(string );
+    NormalizeDocum();
     int normalizeFiles();
     string getNameDir() { return nameDir;}
     vector<string> getListFiles()  {return listFiles; }

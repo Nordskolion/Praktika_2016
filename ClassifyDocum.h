@@ -11,17 +11,19 @@ typedef map <wstring,int> CountWords;
 class ClassifyDocum
 {
 private:
-	NormalizeDocum normalize;
+	NormalizeDocum  * normalize;
 	vector<CountWords> classCountWords;
 	string nameDirClass;
 	string nameClass;
 	CountWords countWordsClass;
 	CountWords countWordsDocum;
+	vector<string> listFiles;
 	int countDocumClass;
 
 
 public:
 	ClassifyDocum(string , string);
 	//~ClassifyDocum();
+	CountWords calculateWords();
 	
 };
