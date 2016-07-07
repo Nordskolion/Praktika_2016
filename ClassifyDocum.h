@@ -7,7 +7,7 @@
 #include "NormalizeDocum.h"
 using namespace std;
 typedef map <wstring,int> CountWords;
-
+typedef map <wstring,double> DfIdf; 
 class ClassifyDocum
 {
 private:
@@ -19,11 +19,12 @@ private:
 	CountWords countWordsDocum;
 	vector<string> listFiles;
 	int countDocumClass;
-
+	DfIdf weightWordsClass;
 
 public:
 	ClassifyDocum(string , string);
 	//~ClassifyDocum();
-	CountWords calculateWords();
+	void calculateWords();
+	void calculateWeight();
 	
 };
