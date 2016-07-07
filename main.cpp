@@ -16,6 +16,7 @@ int main()
     NormalizeDocum normDocum("./files/");
     ClassifyDocum Class1("class1","./edu/class1/");
     Class1.calculateWords();
+    Class1.calculateWeight();
     return 0;
 
 
