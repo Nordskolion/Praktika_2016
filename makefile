@@ -1,4 +1,5 @@
 all: main.o NormalizeDocum.o ClassifyDocum.o
+	clear
 	g++ main.o NormalizeDocum.o ClassifyDocum.o  -std=c++11 -o out
 	rm *.o 
 

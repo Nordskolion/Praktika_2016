@@ -22,11 +22,14 @@ private:
 	vector<string> listFiles; // список файлов в классе 
 	// int countDocumClass; // кол-во документов в классе 
 	DfIdf weightWordsClass;  //веса дф идф для КНН  заготовочка 
-
 public:
 	ClassifyDocum(string , string);
 	//~ClassifyDocum();
 	void calculateWords(); // считает кол-во слова в классе , кол-во слов  , и записывает в мэп 
 	void calculateWeight(); // считает вес ( будут разные алгоритмы ) 
+	double calculateDistance(ClassifyDocum );
+	DfIdf  getWeightWordsClass(){return weightWordsClass;}
+	string getName(){return nameClass;}	
+
 	
 };

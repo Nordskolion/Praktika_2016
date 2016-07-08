@@ -46,6 +46,23 @@ void ClassifyDocum::calculateWeight()//Вес
 		weightWordsClass.insert(pair<wstring,double>(p->first,j));
 	}
 	 for (DfIdf::iterator p = weightWordsClass.begin(); p != weightWordsClass.end(); ++p) {
-                      	wcout << p->first << ": " << p->second << '\n' ;
+                      	// wcout << p->first << ": " << p->second << '\n' ;
          }
+}
+double ClassifyDocum::calculateDistance(ClassifyDocum theme)
+{
+	double x = 0;
+	DfIdf weight1 = theme.getWeightWordsClass();
+
+	cout<<"     ===============================================         "<<theme.getName()<<endl;
+	// for (DfIdf::iterator p = weightWordsClass.begin(); p != weightWordsClass.end(); ++p) {
+ //                      	wcout << p->first << ":DOC " << p->second << '\n' ;
+ //         }
+	cout<<"     ===============================================         "<<theme.getName()<<endl;
+
+    for (DfIdf::iterator p = weight1.begin(); p != weight1.end(); ++p) {
+                      	wcout << p->first << "CLASS : " << p->second << '\n' ;
+                      	cout<< "CLASS"<<endl;
+         }
+	return x;
 }

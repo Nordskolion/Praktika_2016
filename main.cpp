@@ -15,8 +15,10 @@ int main()
     vector<string> files = vector<string>();
     NormalizeDocum normDocum("./files/");
     ClassifyDocum Class1("class1","./edu/class1/");
+    ClassifyDocum Class2("class2","./edu/class2/");
     Class1.calculateWords();
     Class1.calculateWeight();
+    Class1.calculateDistance(Class2);
     return 0;
 
 
