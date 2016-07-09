@@ -5,8 +5,6 @@
 NormalizeDocum::NormalizeDocum(string namedir) { // конструктор  . Сразу нормализует все файлы в дириктории
     nameDir = namedir;
     extSearchFiles = ".txt";
-    scanListFiles();
-    normalizeFiles();
 
 }
 
