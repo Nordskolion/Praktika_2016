@@ -17,6 +17,7 @@ private:
     string extNormDocum = ".norm";
     string extSearchFiles=".txt";
     vector<string> listFiles;
+    vector<string> listDir;
 
 public:
 
@@ -26,7 +27,9 @@ public:
     int normalizeFiles();
     string getNameDir() { return nameDir;}
     vector<string> getListFiles()  {return listFiles; }
-    void setNameDir(string namedir) {nameDir = namedir;}    
+    void setNameDir(string namedir) {nameDir = namedir;}
+    int scanDir();
+    vector<string> getListDir(){return listDir; }    
     wchar_t cannonChar(wchar_t) ;
     ~NormalizeDocum(){};
 

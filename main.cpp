@@ -12,8 +12,13 @@ int main()
 
 	 // setlocale(LC_ALL, "ru_RU.UTF-8");
   //   locale::global( std::locale( "" ) );
-    vector<string> files = vector<string>();
-    NormalizeDocum normDocum("./files/");
+     NormalizeDocum normDocum("./edu/");
+    vector<string> files = normDocum.getListDir();
+    cout<<files.size()<<"::size"<<endl;
+    for(size_t i=0; i < files.size(); i++)
+    {
+     cout<<files[i]<<"========================================================"<<endl;
+    }
     ClassifyDocum Class1("class1","./edu/class1/");
     ClassifyDocum Class2("class2","./edu/class2/");
     ClassifyDocum Class3("class3","./edu/class3/");

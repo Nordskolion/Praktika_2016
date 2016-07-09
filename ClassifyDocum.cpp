@@ -11,7 +11,7 @@ ClassifyDocum::ClassifyDocum(string nameclass ,string namedirclass) // конс�
 	countAllFiles = listFiles.size();
 	calculateWords();	
 	calculateWeight();
-	cout<<listFiles.size()<<endl;
+	// cout<<listFiles.size()<<endl;
 
 }
 
@@ -20,9 +20,9 @@ void ClassifyDocum::calculateWords() //читать класс
 	 for(size_t i=0; i<listFiles.size();i++) 
 	 {
       	wifstream fileId(nameDirClass+listFiles[i]+".norm");
-	 	cout<<listFiles.size()<<"  i:"<<i<<endl;;
+	 	// cout<<listFiles.size()<<"  i:"<<i<<endl;;
         wstring strInput;   
-        cout<<"NewFIle : "<<listFiles[i]<<endl;
+        // cout<<"NewFIle : "<<listFiles[i]<<endl;
         while(fileId>>strInput) 
         {
              //wcout <<strInput<<"====\n";
@@ -59,14 +59,9 @@ double ClassifyDocum::calculateDistance(ClassifyDocum theme)
 	DfIdf weight1 = theme.getWeightWordsClass();
 
 	for (DfIdf::iterator k = weightWordsClass.begin(); k != weightWordsClass.end(); ++k) {
-                      	
-        				
-
-    for (DfIdf::iterator p = weight1.begin(); p != weight1.end(); ++p) {
-                      	
-                        if (k->first == p->first)
-                        {
-                        	x = (double)((x+(double)(k->second+p->second)));
+            			if(weight1[k->first])
+                      	{                        {
+                        	x = (double)((x+(double)(k->second+weight1[k->first])));
                         	countCondition++;
                         	// wcout << theme.getName().c_str() << "  "<< p->first <<  " ======= "<< p->second << '\n' ;
                         	// wcout <<  nameClass.c_str() << "  "<< k->first <<" ======= "<<k->second << '\n' ;
@@ -74,6 +69,6 @@ double ClassifyDocum::calculateDistance(ClassifyDocum theme)
         }
 		}
 	x = (double)x/2;
-	wcout << "========================================" << endl << x << "   " << theme.getName().c_str() << "    " << nameClass.c_str() <<endl;
+	// wcout << "========================================" << endl << x << "   " << theme.getName().c_str() << "    " << nameClass.c_str() <<endl;
 	return x;
 }
