@@ -11,7 +11,7 @@ ClassifyDocum::ClassifyDocum(string nameclass ,string namedirclass) // конс�
 	countAllFiles = listFiles.size();
 	calculateWords();	
 	calculateWeight();
-	// cout<<listFiles.size()<<endl;
+	cout<<listFiles.size()<<endl;
 
 }
 
@@ -45,6 +45,7 @@ void ClassifyDocum::calculateWeight()//Вес
 	{
 		// cout << j<< "  " << p->second <<endl;
 		j = (double)p->second/countAllWords;
+		   // j = p->second;
 		weightWordsClass.insert(pair<wstring,double>(p->first,j));
 	}
 	 for (DfIdf::iterator p = weightWordsClass.begin(); p != weightWordsClass.end(); ++p) {
@@ -54,15 +55,25 @@ void ClassifyDocum::calculateWeight()//Вес
 double ClassifyDocum::calculateDistance(ClassifyDocum theme)
 {
 	double x = 0;
+	int countCondition = 0;
 	DfIdf weight1 = theme.getWeightWordsClass();
 
-	for (DfIdf::iterator p = weightWordsClass.begin(); p != weightWordsClass.end(); ++p) {
-                      	wcout <<  nameClass.c_str() << "  "<< p->first <<" ======= "<<p->second << '\n' ;
-         }
+	for (DfIdf::iterator k = weightWordsClass.begin(); k != weightWordsClass.end(); ++k) {
+                      	
+        				
 
     for (DfIdf::iterator p = weight1.begin(); p != weight1.end(); ++p) {
-                      	wcout << theme.getName().c_str() << "  "<< p->first <<  " ======= "<< p->second << '\n' ;
-                      
-         }
+                      	
+                        if (k->first == p->first)
+                        {
+                        	x = (double)((x+(double)(k->second+p->second)));
+                        	countCondition++;
+                        	// wcout << theme.getName().c_str() << "  "<< p->first <<  " ======= "<< p->second << '\n' ;
+                        	// wcout <<  nameClass.c_str() << "  "<< k->first <<" ======= "<<k->second << '\n' ;
+                        }
+        }
+		}
+	x = (double)x/2;
+	wcout << "========================================" << endl << x << "   " << theme.getName().c_str() << "    " << nameClass.c_str() <<endl;
 	return x;
 }
