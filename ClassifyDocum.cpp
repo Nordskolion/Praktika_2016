@@ -8,6 +8,7 @@ ClassifyDocum::ClassifyDocum(string nameclass ,string namedirclass) // конс�
 	nameDirClass = namedirclass;
 	normalize = new NormalizeDocum(nameDirClass);
 	normalize->scanListFiles();
+	normalize->normalizeFiles();
 	listFiles = normalize->getListFiles();
 	countAllFiles = listFiles.size();
 	calculateWords();
@@ -56,7 +57,7 @@ void ClassifyDocum::calculateWeight()//Вес
 }
 double ClassifyDocum::calculateDistance(ClassifyDocum theme)
 {
-	wcout<<"ZASHEL"<<endl;
+	// wcout<<"ZASHEL"<<endl;
 	double x = 0;
 	int countCondition = 0;
 	DfIdf weight1 = theme.getWeightWordsClass();
@@ -67,7 +68,7 @@ double ClassifyDocum::calculateDistance(ClassifyDocum theme)
                         	x = (double)((x+(double)(k->second+weight1[k->first])));
                         	countCondition++;
                         	// wcout << theme.getName().c_str() << "  "<< p->first <<  " ======= "<< p->second << '\n' ;
-                        	wcout <<  weight1[k->first] << "  "<< k->first <<" ======= "<<k->second << '\n' ;
+                        	// wcout <<  weight1[k->first] << "  "<< k->first <<" ======= "<<k->second << '\n' ;
                         }
 					}
 	x = (double)x/2;
