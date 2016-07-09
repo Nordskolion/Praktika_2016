@@ -12,7 +12,10 @@ int main()
 
 	 // setlocale(LC_ALL, "ru_RU.UTF-8");
   //   locale::global( std::locale( "" ) );
-    NormalizeDocum dirEdu("./edu/");
+    string rootDirEdu="./edu/";
+    string rootDirDocum = "./docum/";
+
+    NormalizeDocum dirEdu(rootDirEdu);
     dirEdu.scanDir();
     vector<string> files = dirEdu.getListDir();
 
