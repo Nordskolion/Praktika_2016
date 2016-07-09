@@ -7,16 +7,18 @@ ClassifyDocum::ClassifyDocum(string nameclass ,string namedirclass) // конс�
 	nameClass=nameclass;
 	nameDirClass = namedirclass;
 	normalize = new NormalizeDocum(nameDirClass);
+	normalize->scanListFiles();
 	listFiles = normalize->getListFiles();
 	countAllFiles = listFiles.size();
 	calculateWords();
 	calculateWeight();
-	// cout<<listFiles.size()<<endl;
+	cout<<listFiles.size()<<endl;
 
 }
 
 void ClassifyDocum::calculateWords() //читать класс
 {
+	cout<<getName()<<"  "<<listFiles.size()<<endl;
 	 for(size_t i=0; i<listFiles.size();i++)
 	 {
       	wifstream fileId(nameDirClass+listFiles[i]+".norm");
@@ -49,26 +51,26 @@ void ClassifyDocum::calculateWeight()//Вес
 		weightWordsClass.insert(pair<wstring,double>(p->first,j));
 	}
 	 for (DfIdf::iterator p = weightWordsClass.begin(); p != weightWordsClass.end(); ++p) {
-                      	// wcout << p->first << ": " << p->second << '\n' ;
+                      	 wcout << p->first << ": " << p->second << '\n' ;
          }
 }
 double ClassifyDocum::calculateDistance(ClassifyDocum theme)
 {
+	wcout<<"ZASHEL"<<endl;
 	double x = 0;
 	int countCondition = 0;
 	DfIdf weight1 = theme.getWeightWordsClass();
 
 	for (DfIdf::iterator k = weightWordsClass.begin(); k != weightWordsClass.end(); ++k) {
             			if(weight1[k->first])
-                      	{                        {
+                      	{                        
                         	x = (double)((x+(double)(k->second+weight1[k->first])));
                         	countCondition++;
                         	// wcout << theme.getName().c_str() << "  "<< p->first <<  " ======= "<< p->second << '\n' ;
-                        	// wcout <<  nameClass.c_str() << "  "<< k->first <<" ======= "<<k->second << '\n' ;
+                        	wcout <<  weight1[k->first] << "  "<< k->first <<" ======= "<<k->second << '\n' ;
                         }
-        }
-		}
+					}
 	x = (double)x/2;
-	// wcout << "========================================" << endl << x << "   " << theme.getName().c_str() << "    " << nameClass.c_str() <<endl;
+	wcout << "========================================" << endl << x << "   " << theme.getName().c_str() << "    " << nameClass.c_str() <<endl;
 	return x;
 }

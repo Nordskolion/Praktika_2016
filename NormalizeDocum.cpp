@@ -23,7 +23,7 @@ int NormalizeDocum::scanListFiles () // функция открывает дер
         if(!strcmp( dirp->d_name, "." )) continue;
         if(!strcmp( dirp->d_name, ".." )) continue;
         if ( strstr( dirp->d_name, ".norm" )) continue;
-        cout<<dirp->d_name<<endl;
+        // cout<<dirp->d_name<<endl;
 
         if ( strstr( dirp->d_name, extSearchFiles.c_str() ))
         {
