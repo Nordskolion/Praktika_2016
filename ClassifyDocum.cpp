@@ -13,7 +13,7 @@ ClassifyDocum::ClassifyDocum(string nameclass ,string namedirclass) // конс�
 	countAllFiles = listFiles.size();
 	calculateWords();
 	calculateWeight();
-	cout<<listFiles.size()<<endl;
+	// cout<<listFiles.size()<<endl;
 
 }
 
@@ -52,7 +52,7 @@ void ClassifyDocum::calculateWeight()//Вес
 		weightWordsClass.insert(pair<wstring,double>(p->first,j));
 	}
 	 for (DfIdf::iterator p = weightWordsClass.begin(); p != weightWordsClass.end(); ++p) {
-                      	 wcout << p->first << ": " << p->second << '\n' ;
+                      	 // wcout << p->first << ": " << p->second << '\n' ;
          }
 }
 double ClassifyDocum::calculateDistance(ClassifyDocum theme)
@@ -73,5 +73,6 @@ double ClassifyDocum::calculateDistance(ClassifyDocum theme)
 					}
 	x = (double)x/2;
 	wcout << "========================================" << endl << x << "   " << theme.getName().c_str() << "    " << nameClass.c_str() <<endl;
+	
 	return x;
 }
