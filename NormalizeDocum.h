@@ -10,7 +10,7 @@
 using namespace std;
 
 
-class NormalizeDocum {   // класс для нормализации документов 
+class NormalizeDocum {   // класс для нормализации документов
 private:
 
     string nameDir;
@@ -21,16 +21,16 @@ private:
 
 public:
 
-    int getDir ();
     NormalizeDocum(string );
-    NormalizeDocum();
+    NormalizeDocum(){};
+    int scanListFiles ();
+    wchar_t cannonChar(wchar_t) ;
     int normalizeFiles();
-    string getNameDir() { return nameDir;}
-    vector<string> getListFiles()  {return listFiles; }
     void setNameDir(string namedir) {nameDir = namedir;}
     int scanDir();
-    vector<string> getListDir(){return listDir; }    
-    wchar_t cannonChar(wchar_t) ;
+    vector<string> getListDir(){return listDir; }
+    string getNameDir() { return nameDir;}
+    vector<string> getListFiles()  {return listFiles; }
     ~NormalizeDocum(){};
 
 };

@@ -2,16 +2,15 @@
 
 
 
-NormalizeDocum::NormalizeDocum(string namedir) { // конструктор  . Сразу нормализует все файлы в дириктории 
+NormalizeDocum::NormalizeDocum(string namedir) { // конструктор  . Сразу нормализует все файлы в дириктории
     nameDir = namedir;
     extSearchFiles = ".txt";
-    scanDir();
-    getDir();
+    scanListFiles();
     normalizeFiles();
 
 }
 
-int NormalizeDocum::getDir () // функция открывает дерикторию и считывает в лист(вектор) 
+int NormalizeDocum::scanListFiles () // функция открывает дерикторию и считывает в лист(вектор)
 {
     DIR *dp;
     struct dirent *dirp;
@@ -30,7 +29,7 @@ int NormalizeDocum::getDir () // функция открывает дерикт�
 
         if ( strstr( dirp->d_name, extSearchFiles.c_str() ))
         {
-            
+
             listFiles.push_back(string(dirp->d_name));
         }
     }
@@ -38,7 +37,7 @@ int NormalizeDocum::getDir () // функция открывает дерикт�
     return 0;
 }
 
-int NormalizeDocum::scanDir () // функция открывает дерикторию и считывает в лист(вектор) 
+int NormalizeDocum::scanDir () // функция открывает дерикторию и считывает в лист(вектор)
 {
     DIR *dp;
     struct dirent *dirp;
@@ -60,7 +59,7 @@ int NormalizeDocum::scanDir () // функция открывает дерикт
 
 
 
-int NormalizeDocum::normalizeFiles() // функция нормализация файла 
+int NormalizeDocum::normalizeFiles() // функция нормализация файла
 {
 
     for (unsigned int i = 0;i < listFiles.size();i++)
@@ -95,7 +94,7 @@ int NormalizeDocum::normalizeFiles() // функция нормализация 
         wstring strChange;
         if(strInput.size() < 7) continue;           ///    отбрасываем слова меньше 4ех букв  ( чар = 2 байта   6=3 буквы )
         for(size_t i=0;i< strInput.size();i++) {
-            if(cannonChar(strInput[i]) != '\0') {     //  пропускаем этот символ или нет 
+            if(cannonChar(strInput[i]) != '\0') {     //  пропускаем этот символ или нет
                 strChange += cannonChar(strInput[i]);
 
             }
@@ -125,7 +124,7 @@ int NormalizeDocum::normalizeFiles() // функция нормализация 
 
 
 
-wchar_t NormalizeDocum::cannonChar( wchar_t r) // функция замены и проверки букв на каноничность 
+wchar_t NormalizeDocum::cannonChar( wchar_t r) // функция замены и проверки букв на каноничность
 {
  wchar_t res;
  switch (r)
