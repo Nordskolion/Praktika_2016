@@ -1,7 +1,7 @@
 #include "ClassifyDocum.h"
 
 
-ClassifyDocum::ClassifyDocum(string nameclass ,string namedirclass) // конструктор , сразу нормализует документы 
+ClassifyDocum::ClassifyDocum(string nameclass ,string namedirclass) // конструктор , сразу нормализует документы
 {
 	countAllWords = 0;
 	nameClass=nameclass;
@@ -9,21 +9,21 @@ ClassifyDocum::ClassifyDocum(string nameclass ,string namedirclass) // конс�
 	normalize = new NormalizeDocum(nameDirClass);
 	listFiles = normalize->getListFiles();
 	countAllFiles = listFiles.size();
-	calculateWords();	
+	calculateWords();
 	calculateWeight();
 	// cout<<listFiles.size()<<endl;
 
 }
 
-void ClassifyDocum::calculateWords() //читать класс 
+void ClassifyDocum::calculateWords() //читать класс
 {
-	 for(size_t i=0; i<listFiles.size();i++) 
+	 for(size_t i=0; i<listFiles.size();i++)
 	 {
       	wifstream fileId(nameDirClass+listFiles[i]+".norm");
 	 	// cout<<listFiles.size()<<"  i:"<<i<<endl;;
-        wstring strInput;   
+        wstring strInput;
         // cout<<"NewFIle : "<<listFiles[i]<<endl;
-        while(fileId>>strInput) 
+        while(fileId>>strInput)
         {
              //wcout <<strInput<<"====\n";
              ++countWordsClass[strInput];
