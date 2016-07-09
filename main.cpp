@@ -24,7 +24,7 @@ int main()
     for(size_t i=0; i < files.size(); i++)
     {
      // cout<<files[i]<<"========================================================"<<endl;
-     // classEdu.push_back(new ClassifyDocum(files[i],rootDirEdu+files[i]+"/"));
+     classEdu.push_back(new ClassifyDocum(files[i],rootDirEdu+files[i]+"/"));
       // cout<<rootDirEdu+files[i]<<endl;
     } 
     ClassifyDocum classDocum("Docum",rootDirDocum); 
