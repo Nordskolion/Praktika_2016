@@ -27,6 +27,7 @@ void ClassifyDocum::calculateWords() //читать класс
         wstring strInput;
         while(fileId>>strInput)
         {
+        	++fileCountWords[listFiles[i]][strInput];
              ++countWordsClass[strInput];
              countAllWords++;
          }
@@ -78,4 +79,13 @@ double ClassifyDocum::calculateDistance(ClassifyDocum theme)
 	 // wcout << "========================================Y::"   << y << "   " << theme.getName().c_str() << "    " << nameClass.c_str() <<endl;
 	
 	return x;
+}
+
+void ClassifyDocum::whileCalculate(vector<ClassifyDocum *> classEdu)
+{
+	for(size_t i=0; i < classEdu.size(); i++)
+    {
+     calculateDistance(*classEdu[i]);
+    }
+
 }

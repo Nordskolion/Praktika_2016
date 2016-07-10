@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <string.h>
 #include <map>
 #include <vector>
@@ -8,7 +7,7 @@
 using namespace std;
 typedef map <wstring,int> CountWords; // обьявление мэпов
 typedef map <wstring,double> DfIdf;
-typedef map <wstring,CountWords> FileCountWords;
+typedef map <string,CountWords> FileCountWords;
 class ClassifyDocum
 {
 private:
@@ -29,6 +28,8 @@ public:
 	void calculateWords(); // считает кол-во слова в классе , кол-во слов  , и записывает в мэп
 	void calculateWeight(); // считает вес ( будут разные алгоритмы )
 	double calculateDistance(ClassifyDocum );
+	void whileCalculate(vector<ClassifyDocum *>);
+
 	DfIdf  getWeightWordsClass(){return weightWordsClass;}
 	string getName(){return nameClass;}
 
