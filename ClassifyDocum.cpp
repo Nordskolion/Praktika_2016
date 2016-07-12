@@ -50,9 +50,10 @@ void ClassifyDocum::calculateWords() //читать класс
         	++fileCountWords[listFiles[i]][strInput];
              ++countWordsClass[strInput];
              countAllWords++;
-			 TermInDoc.insert(pair<wstring,wstring>(listFiles[i].c_str(),strInput.c_str()));         }
+			 // TermInDoc.insert(pair<string,wstring>(listFiles[i].c_str(),strInput.c_str()));         
+         }
          fileId.close();
-         // classCountWords.push_back(countWordsClass);
+         classCountWords.push_back(countWordsClass);
          // fileCountWords.
     }
 
@@ -69,12 +70,13 @@ void ClassifyDocum::calculateWeight()//Вес
 	{
 		// cout << j<< "  " << p->second <<endl;
 	
-		j = (double)(p->second/countAllWords);
-		   // j = p->second;
+		j = (double)p->second/countAllWords;
+		 // j = p->second;
 		weightWordsClass.insert(pair<wstring,double>(p->first,j));
+
 	}
 	 for (DfIdf::iterator p = weightWordsClass.begin(); p != weightWordsClass.end(); ++p) {
-                      	 // wcout << p->first << ": " << p->second << '\n' ;
+                      	 wcout << p->first << ": " << p->second << '\n' ;
          }
 }
 double ClassifyDocum::calculateDistance(ClassifyDocum theme)

@@ -8,7 +8,7 @@ using namespace std;
 typedef map <wstring,int> CountWords; // обьявление мэпов
 typedef map <wstring,double> DfIdf;
 typedef map <string,CountWords> FileCountWords;
-typedef map <wstring,wstring> HelpToCountITF;
+typedef map <string,wstring> HelpToCountITF;
 class ClassifyDocum
 {
 private:
