@@ -8,6 +8,7 @@ using namespace std;
 typedef map <wstring,int> CountWords; // обьявление мэпов
 typedef map <wstring,double> DfIdf;
 typedef map <string,CountWords> FileCountWords;
+typedef map <wstring,wstring> HelpToCountITF;
 class ClassifyDocum
 {
 private:
@@ -22,6 +23,7 @@ private:
 	int countAllFiles; // все слова в файле
 	vector<string> listFiles; // список файлов в классе
 	DfIdf weightWordsClass;  //веса дф идф для КНН  заготовочка
+	HelpToCountITF TermInDoc;
 public:
 	ClassifyDocum(string , string);
 	ClassifyDocum(string , string , string);

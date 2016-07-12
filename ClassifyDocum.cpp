@@ -50,7 +50,7 @@ void ClassifyDocum::calculateWords() //читать класс
         	++fileCountWords[listFiles[i]][strInput];
              ++countWordsClass[strInput];
              countAllWords++;
-         }
+			 TermInDoc.insert(pair<wstring,wstring>(listFiles[i].c_str(),strInput.c_str()));         }
          fileId.close();
          // classCountWords.push_back(countWordsClass);
          // fileCountWords.
@@ -68,7 +68,8 @@ void ClassifyDocum::calculateWeight()//Вес
 	for(CountWords::iterator p = countWordsClass.begin(); p != countWordsClass.end(); ++p)
 	{
 		// cout << j<< "  " << p->second <<endl;
-		j = (double)p->second/countAllWords;
+	
+		j = (double)(p->second/countAllWords);
 		   // j = p->second;
 		weightWordsClass.insert(pair<wstring,double>(p->first,j));
 	}

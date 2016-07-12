@@ -41,14 +41,14 @@ int main()
 
 void whileCalculate(string rootDirDocum,string rootDirEdu )
 {
-  NormalizeDocum dirEdu(rootDirEdu);
+    double x = 0;
+    NormalizeDocum dirEdu(rootDirEdu);
     NormalizeDocum dirDocum(rootDirDocum);
     dirDocum.scanListFiles();
     vector<string> listFiles=dirDocum.getListFiles();
     dirEdu.scanDir();
     vector<string> files = dirEdu.getListDir();
     vector<ClassifyDocum *> classEdu;
-
      for(size_t i=0; i < files.size(); i++)
     {
      classEdu.push_back(new ClassifyDocum(files[i],rootDirEdu+files[i]+"/"));
@@ -56,11 +56,11 @@ void whileCalculate(string rootDirDocum,string rootDirEdu )
 
     for (size_t i = 0; i<listFiles.size(); i++)
     {
-      ClassifyDocum docum(listFiles[i] , rootDirDocum , listFiles[i]);
+       ClassifyDocum docum(listFiles[i] , rootDirDocum , listFiles[i]);
     
     for(size_t i=0; i < classEdu.size(); i++)
     {
-     docum.calculateDistance(*classEdu[i]);
+     x = docum.calculateDistance(*classEdu[i]);
     }
   }
 }
