@@ -75,9 +75,9 @@ void ClassifyDocum::calculateWeight()//Вес
 		weightWordsClass.insert(pair<wstring,double>(p->first,j));
 
 	}
-	 for (DfIdf::iterator p = weightWordsClass.begin(); p != weightWordsClass.end(); ++p) {
-                      	 wcout << p->first << ": " << p->second << '\n' ;
-         }
+	 // for (DfIdf::iterator p = weightWordsClass.begin(); p != weightWordsClass.end(); ++p) {
+                      	 // wcout << p->first << ": " << p->second << '\n' ;
+         // }
 }
 double ClassifyDocum::calculateDistance(ClassifyDocum theme)
 {
